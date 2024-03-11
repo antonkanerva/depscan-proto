@@ -1,0 +1,9 @@
+[package]
+name = "depscan-proto"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+tonic-build = "0.11.0"
+
+[dependencies]
