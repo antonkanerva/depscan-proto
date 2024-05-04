@@ -2,8 +2,8 @@
 Protocol Buffers library for the DepScan ecosystem.
 
 ## Dependencies
-Build dependencies:
-- Rust compiler v1.77.1
+Build dependencies used:
+- Rust compiler v1.78.0
 - Protobuf compiler v3.2.14
 
 See [Cargo.toml](Cargo.toml) for lib dependencies.

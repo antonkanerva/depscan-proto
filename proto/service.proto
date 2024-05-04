@@ -3,31 +3,35 @@ syntax = "proto3";
 package depscan;
 
 service DepScan {
-    rpc Index(Empty) returns (IndexResponse);
-    rpc GetDependencies(Empty) returns (Dependencies);
-    rpc PostVersions(DependencyVersions) returns (Empty);
+    rpc Index(Empty) returns (TextMessage);
+    rpc GetDependencies(Empty) returns (ProjectDependencies);
+    rpc PostDependencies(ProjectDependencies) returns (TextMessage);
+    rpc PostVersions(ScannedDependencies) returns (TextMessage);
 }
 
 message Empty {}
 
-message IndexResponse {
+message TextMessage {
     string message = 1;
 }
 
-message Dependency {
+message ProjectDependency {
     string name = 1;
-    string repository = 2;
+    string language = 2;
+    string registry = 3;
+    string timestamp = 4;
 }
 
-message Dependencies {
-    repeated Dependency dependencies = 1;
+message ProjectDependencies {
+    repeated ProjectDependency dependencies = 1;
 }
 
-message DependencyVersion {
-    string package = 1;
-    string version = 2;
+message ScannedDependency {
+    string name = 1;
+    string language = 2;
+    string version = 3;
 }
 
-message DependencyVersions {
-    repeated DependencyVersion dependencies = 1;
+message ScannedDependencies {
+    repeated ScannedDependency dependencies = 1;
 }
