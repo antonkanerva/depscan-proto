@@ -4,8 +4,8 @@ package depscan;
 
 service DepScan {
     rpc Index(Empty) returns (TextMessage);
-    rpc GetDependencies(Empty) returns (ProjectDependencies);
-    rpc PostDependencies(ProjectDependencies) returns (TextMessage);
+    rpc GetDependencies(Empty) returns (ProjectDependenciesGet);
+    rpc PostDependencies(ProjectDependenciesPost) returns (TextMessage);
     rpc PostVersions(ScannedDependencies) returns (TextMessage);
 }
 
@@ -15,21 +15,32 @@ message TextMessage {
     string message = 1;
 }
 
-message ProjectDependency {
+message ProjectDependenciesGet {
+    repeated ProjectDependencyGet dependencies = 1;
+}
+
+message ProjectDependenciesPost {
+    repeated ProjectDependencyPost dependencies = 1;
+}
+
+message ProjectDependencyGet {
     string name = 1;
     string language = 2;
     string registry = 3;
     string timestamp = 4;
 }
 
-message ProjectDependencies {
-    repeated ProjectDependency dependencies = 1;
+message ProjectDependencyPost {
+    string name = 1;
+    string language = 2;
+    string registry = 3;
 }
 
 message ScannedDependency {
     string name = 1;
     string language = 2;
-    string version = 3;
+    string registry = 3;
+    string version = 4;
 }
 
 message ScannedDependencies {
