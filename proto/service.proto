@@ -4,9 +4,10 @@ package depscan;
 
 service DepScan {
     rpc Index(Empty) returns (TextMessage);
-    rpc GetDependencies(Empty) returns (ProjectDependenciesGet);
-    rpc PostDependencies(ProjectDependenciesPost) returns (TextMessage);
-    rpc PostVersions(ScannedDependencies) returns (TextMessage);
+    rpc GetProjectDependencies(Empty) returns (ProjectDependenciesGet);
+    rpc GetScannedDependencies(Empty) returns (ScannedDependencies);
+    rpc PostProjectDependencies(ProjectDependenciesPost) returns (TextMessage);
+    rpc PostScannedDependencies(ScannedDependencies) returns (TextMessage);
 }
 
 message Empty {}
